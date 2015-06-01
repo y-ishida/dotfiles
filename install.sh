@@ -9,6 +9,9 @@ if ! [ -f ~/.ssh/id_rsa.pub ]; then
 	ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 fi
 
+git config --global color.ui auto
+git config --global core.editor vim
+
 # Vundleのインストール
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
