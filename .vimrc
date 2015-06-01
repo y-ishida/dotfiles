@@ -70,6 +70,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'Align'
+Plugin 'majutsushi/tagbar'
 
 Plugin 'y-ishida/vim-vala'
 
@@ -81,6 +82,8 @@ filetype plugin indent on    " required
 
 "------------------------------------------------------
 
+" for tagbar plugin
+let g:tagbar_ctags_bin = "anjuta-tags"
 
 " for vim-vala plugin
 let vala_comment_strings = 1
