@@ -1,5 +1,7 @@
 #/bin/sh
 
+DIR=$(cd $(dirname $0); pwd)
+
 sudo apt-get install vim
 
 sudo apt-get install git
@@ -19,7 +21,7 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 if [ -e ~/.vimrc ]; then
 	mv ~/.vimrc ~/.vimrc.old
 fi
-ln -fs $(dirname $0)/.vimrc ~/.vimrc
+ln -fs $DIR/.vimrc ~/.vimrc
 
 # vimプラグインのインストール (Vundle)
 vim +PluginInstall +qall
