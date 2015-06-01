@@ -16,7 +16,10 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 if [ -e ~/.vimrc ]; then
 	mv ~/.vimrc ~/.vimrc.old
 fi
-ln -fs $(dirname $0)/.vimrc ~/.vimrc 
+ln -fs $(dirname $0)/.vimrc ~/.vimrc
+
+# vimプラグインのインストール (Vundle)
+vim +PluginInstall +qall
 
 # 公開鍵の表示
 echo
