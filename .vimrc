@@ -84,6 +84,7 @@ filetype plugin indent on    " required
 
 " for tagbar plugin
 let g:tagbar_ctags_bin = "anjuta-tags"
+nmap <Leader>tb :TagbarToggle<CR>
 
 " for vim-vala plugin
 let vala_comment_strings = 1
