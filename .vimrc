@@ -95,3 +95,6 @@ let vala_space_errors = 1
 set t_Co=256
 colorscheme molokai
 
+"コメント行の自動継続 (プラグインで設定されているようなので最後に設定)
+set formatoptions+=ro
+
