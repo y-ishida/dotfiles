@@ -37,7 +37,7 @@ install_byobu() {
 
 
 install_build_tools() {
-	sudo apt-get install build-essential autoconf automake
+	sudo apt-get install build-essential autoconf automake libtool
 }
 
 
