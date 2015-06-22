@@ -95,6 +95,32 @@ install_src_libgee() {
 	sudo make install
 }
 
+
+install_src_valadoc() {
+	if type valadoc > /dev/null 2>&1; then
+		echo "Valadocはイントール済みです"
+		return
+	fi
+
+	cd $SRC
+
+	# ビルドに必要なパッケージをインストール
+	sudo apt-get install libgraphviz-dev
+
+	# ソースをダウンロード
+	if ! [ -e valadoc ]; then
+		git clone https://git.gnome.org/browse/valadoc
+	fi
+
+	# make and install
+	cd valadoc
+	./autogen.sh
+	./configure
+	make
+	sudo make install
+	sudo ldconfig
+}
+
 gen_key() {
 	# 公開鍵の生成
 	if ! [ -f ~/.ssh/id_rsa.pub ]; then
@@ -112,8 +138,8 @@ gen_key() {
 	echo '------------------------------'
 }
 
-
-set -xe
+#set -x
+set -e
 
 # install from repository
 install_git
@@ -127,6 +153,7 @@ if ! [ -e $SRC ]; then
 fi
 install_src_valac
 install_src_libgee
+install_src_valadoc
 
 # etc.
 gen_key
