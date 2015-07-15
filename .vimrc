@@ -98,3 +98,9 @@ colorscheme molokai
 "コメント行の自動継続 (プラグインで設定されているようなので最後に設定)
 set formatoptions+=ro
 
+" Windows用設定
+if has('win32')
+  set enc=utf-8
+  set guifont=IPAゴシック:h12:cSHIFTJIS
+endif
+
