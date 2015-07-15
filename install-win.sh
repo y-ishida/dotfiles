@@ -22,6 +22,15 @@ setup_vim() {
 	gvim +PluginInstall +qall
 }
 
+setup_sphinx() {
+	cd $DIR/win
+
+	# 'make latexpdfja' を実行可能にするためのパッチ
+	powershell -command "Start-Process -Verb runas cp_sphinx_texinput_make.bat"
+
+	cd $DIR
+}
+
 gen_key() {
 	# 公開鍵の生成
 	if ! [ -f ~/.ssh/id_rsa.pub ]; then
@@ -45,6 +54,7 @@ set -e
 # install from repository
 setup_git
 setup_vim
+setup_sphinx
 
 # etc.
 gen_key
