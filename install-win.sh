@@ -31,6 +31,11 @@ setup_sphinx() {
 	cd $DIR
 }
 
+setup_latex() {
+	# IPAexフォントを埋め込み
+	kanji-config-updmap ipaex
+}
+
 gen_key() {
 	# 公開鍵の生成
 	if ! [ -f ~/.ssh/id_rsa.pub ]; then
@@ -55,6 +60,7 @@ set -e
 setup_git
 setup_vim
 setup_sphinx
+setup_latex
 
 # etc.
 gen_key
