@@ -16,7 +16,8 @@ setup_vim() {
 	fi
 
 	# .vimrcをコピー
-	iconv -f UTF-8 -t CP932 $DIR/.vimrc > ~/_gvimrc
+	#iconv -f UTF-8 -t CP932 $DIR/.vimrc > ~/_gvimrc
+	cp $DIR/.vimrc ~/_gvimrc
 
 	# vimプラグインのインストール (Vundle)
 	gvim +PluginInstall +qall
