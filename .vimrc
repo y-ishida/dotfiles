@@ -102,5 +102,11 @@ set formatoptions+=ro
 if has('win32')
   set enc=utf-8
   set guifont=IPAゴシック:h12:cSHIFTJIS
+
+  " メニューの文字化け対策
+  source $VIMRUNTIME/delmenu.vim
+  set langmenu=ja_jp.utf-8
+  source $VIMRUNTIME/menu.vim
+
 endif
 
