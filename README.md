@@ -14,7 +14,8 @@
 
 * Sphinxインストール
 
-<https://bitbucket.org/sphinxjp/website/downloads/SphinxInstaller-1.2.3.20141115-py2.7-win32.zip>
+<https://bitbucket.org/sphinxjp/website/downloads/SphinxInstaller-1.3b1.20141120-py2.7-win32.zip>
+
 
 * Gitインストール
 
