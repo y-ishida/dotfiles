@@ -24,6 +24,7 @@
 * IPA / IPAexフォントのインストール
 
 <http://ipafont.ipa.go.jp/ipafont/IPAfont00303.php>
+
 <http://ipafont.ipa.go.jp/ipaexfont/IPAexfont00201.php>
 
 
