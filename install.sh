@@ -17,7 +17,7 @@ install_vim() {
 	sudo apt-get install vim
 
 	# Vundleのインストール
-	if ![ -e ~/.vim/bundle/Vundle.vim ]; then
+	if ! [ -e ~/.vim/bundle/Vundle.vim ]; then
 		git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	fi
 
