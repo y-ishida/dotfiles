@@ -1,5 +1,14 @@
 # dotfiles
 
+## apt-get install でエラーが出るときは
+
+```
+sudo apt-get update
+```
+
+を実行すると良いかも。(リポジトリをアップデート)
+
+
 ## install-win.sh 実行前に
 
 * Vimインストール
