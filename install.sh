@@ -43,6 +43,11 @@ install_build_tools() {
 }
 
 
+install_sphinx() {
+	sudo apt-get install python-sphinx
+}
+
+
 install_src_valac() {
 	if type vala > /dev/null 2>&1; then
 		echo "Valaはイントール済みです"
@@ -148,6 +153,7 @@ install_git
 install_vim
 install_byobu
 install_build_tools
+install_sphinx
 
 # make and install from source code
 if ! [ -e $SRC ]; then
