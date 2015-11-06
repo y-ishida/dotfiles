@@ -48,6 +48,8 @@ install_build_tools() {
 
 install_sphinx() {
 	sudo apt-get install python-sphinx
+	sudo apt-get install python-pip
+	pip install sphinx-intl
 }
 
 
