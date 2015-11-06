@@ -40,6 +40,9 @@ install_byobu() {
 install_build_tools() {
 	sudo apt-get install build-essential autoconf automake libtool
 	sudo apt-get install libxml2-dev
+
+	# MinGW
+	sudo apt-get install mingw-w64
 }
 
 
