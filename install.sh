@@ -53,6 +53,13 @@ install_sphinx() {
 }
 
 
+install_gollum() {
+	sudo apt-get install python
+	sudo apt-get install ruby ruby-dev libicu-dev
+	sudo gem install gollum
+}
+
+
 install_src_valac() {
 	if type vala > /dev/null 2>&1; then
 		echo "Valaはイントール済みです"
@@ -159,6 +166,7 @@ install_vim
 install_byobu
 install_build_tools
 install_sphinx
+install_gollum
 
 # make and install from source code
 if ! [ -e $SRC ]; then
