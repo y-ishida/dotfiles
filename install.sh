@@ -5,7 +5,7 @@ SRC=~/src
 
 
 install_git() {
-	sudo apt-get install git
+	sudo apt-get -y install git
 
 	git config --global color.ui auto
 	git config --global core.editor vim
@@ -14,7 +14,7 @@ install_git() {
 
 
 install_vim() {
-	sudo apt-get install vim
+	sudo apt-get -y install vim
 
 	# Vundleのインストール
 	if ! [ -e ~/.vim/bundle/Vundle.vim ]; then
@@ -33,29 +33,29 @@ install_vim() {
 
 
 install_byobu() {
-	sudo apt-get install byobu
+	sudo apt-get -y install byobu
 }
 
 
 install_build_tools() {
-	sudo apt-get install build-essential autoconf automake libtool
-	sudo apt-get install libxml2-dev
+	sudo apt-get -y install build-essential autoconf automake libtool
+	sudo apt-get -y install libxml2-dev
 
 	# MinGW
-	sudo apt-get install mingw-w64
+	sudo apt-get -y install mingw-w64
 }
 
 
 install_sphinx() {
-	sudo apt-get install python-sphinx
-	sudo apt-get install python-pip
+	sudo apt-get -y install python-sphinx
+	sudo apt-get -y install python-pip
 	pip install sphinx-intl
 }
 
 
 install_gollum() {
-	sudo apt-get install python
-	sudo apt-get install ruby ruby-dev libicu-dev
+	sudo apt-get -y install python
+	sudo apt-get -y install ruby ruby-dev libicu-dev
 	sudo gem install gollum
 }
 
@@ -69,7 +69,7 @@ install_src_valac() {
 	cd $SRC
 
 	# valacビルドに必要なパッケージをインストール
-	sudo apt-get install flex bison libgtk-3-dev
+	sudo apt-get -y install flex bison libgtk-3-dev
 
 	# valacソースをダウンロード
 	wget http://download.gnome.org/sources/vala/0.28/vala-0.28.0.tar.xz
@@ -86,7 +86,7 @@ install_src_valac() {
 	sudo ldconfig
 
 	# anjuta-tags
-	sudo apt-get install anjuta
+	sudo apt-get -y install anjuta
 }
 
 
@@ -124,7 +124,7 @@ install_src_valadoc() {
 	cd $SRC
 
 	# ビルドに必要なパッケージをインストール
-	sudo apt-get install libgraphviz-dev
+	sudo apt-get -y install libgraphviz-dev
 
 	# ソースをダウンロード
 	if ! [ -e valadoc ]; then
