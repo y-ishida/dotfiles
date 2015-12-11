@@ -55,7 +55,7 @@ install_sphinx() {
 
 install_gollum() {
 	sudo apt-get -y install python
-	sudo apt-get -y install ruby ruby-dev libicu-dev
+	sudo apt-get -y install ruby ruby-dev libicu-dev zlib1g-dev
 	sudo gem install gollum
 }
 
