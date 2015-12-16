@@ -74,6 +74,9 @@ Plugin 'majutsushi/tagbar'
 
 Plugin 'y-ishida/vim-vala'
 
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
 Plugin 'tomasr/molokai'
 
 " All of your Plugins must be added before the following line
