@@ -60,6 +60,33 @@ install_gollum() {
 }
 
 
+install_deb_tools() {
+	sudo apt-get -y install dh-make devscripts pbuilder
+
+	pb_dir=/var/cache/pbuilder
+	hook_dir=$pb_dir/hooks
+	result_dir=$pb_dir/result
+
+	# フックスクリプト置き場の作成
+	if ! [ -e $hook_dir ]; then
+		sudo mkdir $hook_dir
+	fi
+	sudo chmod 777 $hook_dir
+
+	# 結果置き場のアクセス権設定
+	sudo chmod 777 $result_dir
+
+	# ビルドエラー時に pbuilder 環境内のシェルにとどまるスクリプト
+	cp /usr/share/doc/pbuilder/examples/C10shell $hook_dir
+
+	# pbuilder の設定
+	cat <<-'EOF' > ~/.pbuilderrc
+	AUTO_DEBSIGN=${AUTO_DEBSIGN:-no}
+	HOOKDIR=/var/cache/pbuilder/hooks
+	EOF
+}
+
+
 install_src_valac() {
 	if type vala > /dev/null 2>&1; then
 		echo "Valaはイントール済みです"
@@ -167,6 +194,7 @@ install_byobu
 install_build_tools
 install_sphinx
 install_gollum
+install_deb_tools
 
 # make and install from source code
 if ! [ -e $SRC ]; then
