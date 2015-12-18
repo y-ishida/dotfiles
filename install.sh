@@ -87,6 +87,24 @@ install_deb_tools() {
 }
 
 
+install_rpm_tools() {
+	sudo apt-get -y install alien gdebi
+
+	if type rpmrebuild > /dev/null 2>&1; then
+		echo "rpmrebuild はイントール済みです"
+		return
+	fi
+
+	cd /tmp
+
+	wget --trust-server-names http://sourceforge.net/projects/rpmrebuild/files/rpmrebuild/2.11/rpmrebuild-2.11-1.noarch.rpm/download
+	sudo alien --to-deb rpmrebuild-2.11-1.noarch.rpm
+	sudo gdebi rpmrebuild_2.11-2_all.deb
+
+	cd $SRC
+}
+
+
 install_src_valac() {
 	if type vala > /dev/null 2>&1; then
 		echo "Valaはイントール済みです"
@@ -195,6 +213,7 @@ install_build_tools
 install_sphinx
 install_gollum
 install_deb_tools
+install_rpm_tools
 
 # make and install from source code
 if ! [ -e $SRC ]; then
