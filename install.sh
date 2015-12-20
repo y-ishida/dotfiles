@@ -99,7 +99,7 @@ install_rpm_tools() {
 
 	wget --trust-server-names http://sourceforge.net/projects/rpmrebuild/files/rpmrebuild/2.11/rpmrebuild-2.11-1.noarch.rpm/download
 	sudo alien --to-deb rpmrebuild-2.11-1.noarch.rpm
-	sudo gdebi rpmrebuild_2.11-2_all.deb
+	sudo gdebi -n rpmrebuild_2.11-2_all.deb
 
 	cd $SRC
 }
