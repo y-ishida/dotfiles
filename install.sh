@@ -105,6 +105,14 @@ install_rpm_tools() {
 }
 
 
+install_gh() {
+	sudo apt-get -y install curl
+	curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
+	sudo apt-get -y install nodejs
+	sudo npm install -g gh
+}
+
+
 install_src_valac() {
 	if type vala > /dev/null 2>&1; then
 		echo "Valaはイントール済みです"
@@ -214,6 +222,7 @@ install_sphinx
 install_gollum
 install_deb_tools
 install_rpm_tools
+install_gh
 
 # make and install from source code
 if ! [ -e $SRC ]; then
