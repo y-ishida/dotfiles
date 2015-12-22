@@ -34,6 +34,11 @@ install_vim() {
 
 install_byobu() {
 	sudo apt-get -y install byobu
+
+	# for 256 colors setting
+	byobu_profile=/usr/share/byobu/profiles/tmux
+	sudo cp ${byobu_profile} ${byobu_profile}.orig
+	sed -e "s/\"screen\"/\"screen-256color\"/" ${byobu_profile}.orig | sudo tee ${byobu_profile} > /dev/null
 }
 
 
