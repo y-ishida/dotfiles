@@ -118,6 +118,12 @@ install_gh() {
 }
 
 
+install_ghi() {
+	sudo apt-get -y install ruby
+	sudo gem install ghi
+}
+
+
 install_src_valac() {
 	if type vala > /dev/null 2>&1; then
 		echo "Valaはイントール済みです"
@@ -227,7 +233,8 @@ install_sphinx
 install_gollum
 install_deb_tools
 install_rpm_tools
-install_gh
+#install_gh
+install_ghi
 
 # make and install from source code
 if ! [ -e $SRC ]; then
