@@ -124,6 +124,30 @@ install_ghi() {
 }
 
 
+install_apache2() {
+	sudo apt-get install apache2
+	sudo apt-get install php5 php-pear libapache2-mod-php5
+	sudo pear install Mail
+	sudo chmod 777 /var/www/html
+	sudo a2enmod rewrite
+	sudo apache2ctl restart
+
+	# さらに、 /etc/apache2/apache2.conf 内の
+	#
+	# <Directory /var/www/>
+	# 	Options Indexes FollowSymLinks
+	# 	AllowOverride None
+	# 	Require all granted
+	# </Directory>
+	#
+	# の部分を、
+	#
+	# 	AllowOverride All
+	#
+	# に変更する必要がある。
+	# (.htaccess を有効化するため)
+}
+
 install_src_valac() {
 	if type vala > /dev/null 2>&1; then
 		echo "Valaはイントール済みです"
@@ -235,6 +259,7 @@ install_deb_tools
 install_rpm_tools
 #install_gh
 install_ghi
+install_apache2
 
 # make and install from source code
 if ! [ -e $SRC ]; then
