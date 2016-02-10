@@ -75,7 +75,10 @@ Plugin 'majutsushi/tagbar'
 Plugin 'y-ishida/vim-vala'
 
 Plugin 'godlygeek/tabular'
+
 Plugin 'plasticboy/vim-markdown'
+Plugin 'tyru/open-browser.vim'
+Plugin 'kannokanno/previm'
 
 Plugin 'tomasr/molokai'
 
@@ -93,6 +96,11 @@ nmap <Leader>tb :TagbarToggle<CR>
 let vala_comment_strings = 1
 let vala_space_errors = 1
 "let vala_no_tab_space_error = 1
+
+" for open-browser plugin
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
 
 " for molokai plugin (color scheme)
 set t_Co=256
