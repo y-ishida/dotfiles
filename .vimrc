@@ -105,6 +105,7 @@ vmap gx <Plug>(openbrowser-smart-search)
 " for molokai plugin (color scheme)
 set t_Co=256
 silent! colorscheme molokai
+syntax enable
 
 "コメント行の自動継続 (プラグインで設定されているようなので最後に設定)
 set formatoptions+=ro
