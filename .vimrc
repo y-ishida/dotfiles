@@ -122,3 +122,12 @@ if has('win32')
 
 endif
 
+vmap K `>a %}`<i{%key %%
+vmap M `>a %}`<i{%mode %%
+vmap " :s/^"//egv:s/"$//egv:s/\\"/"/eggv:s/``/`/eg:noh
+
+" prep後に .po で適用
+nmap _K /:kbd:df:lvi`K%hx%lx_K
+nmap _M /:ref:df:lvi`Ugv:s/-/ /ggvM%hx%lx_M
+
+
