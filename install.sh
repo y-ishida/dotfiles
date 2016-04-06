@@ -228,6 +228,25 @@ install_src_valadoc() {
 	sudo ldconfig
 }
 
+
+install_src_imagemagick() {
+	cd $SRC
+
+	# ビルドに必要なパッケージをインストール
+	sudo apt-get -y install librsvg2-dev
+
+	# ソースをダウンロード
+	wget http://www.imagemagick.org/download/ImageMagick.tar.gz
+	tar xzvf ImageMagick.tar.gz
+
+	# make and install
+	cd ImageMagick-*/
+	./configure --with-rsvg
+	make
+	sudo make install
+	sudo ldconfig
+}
+
 gen_key() {
 	# 公開鍵の生成
 	if ! [ -f ~/.ssh/id_rsa.pub ]; then
@@ -268,6 +287,7 @@ fi
 install_src_valac
 install_src_libgee
 install_src_valadoc
+install_src_imagemagick
 
 # etc.
 gen_key
