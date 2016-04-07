@@ -247,6 +247,20 @@ install_src_imagemagick() {
 	sudo ldconfig
 }
 
+install_src_cmake() {
+	cd $SRC
+
+	# ソースをダウンロード
+	wget https://cmake.org/files/v3.5/cmake-3.5.1.tar.gz
+	tar xzvf cmake-*
+
+	# make and install
+	cd cmake-*/
+	./bootstrap
+	make
+	sudo make install
+}
+
 gen_key() {
 	# 公開鍵の生成
 	if ! [ -f ~/.ssh/id_rsa.pub ]; then
