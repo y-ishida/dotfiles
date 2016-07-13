@@ -76,9 +76,14 @@ Plugin 'y-ishida/vim-vala'
 
 Plugin 'godlygeek/tabular'
 
-Plugin 'plasticboy/vim-markdown'
 Plugin 'tyru/open-browser.vim'
 Plugin 'kannokanno/previm'
+
+"-- for HTML/CSS/JS
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-surround'
+
+Plugin 'sheerun/vim-polyglot'
 
 Plugin 'tomasr/molokai'
 
@@ -96,6 +101,12 @@ nmap <Leader>tb :TagbarToggle<CR>
 let vala_comment_strings = 1
 let vala_space_errors = 1
 "let vala_no_tab_space_error = 1
+
+" disable the polyglot's vala syntax
+let g:polyglot_disabled = ['vala']
+
+autocmd! FileType html setlocal sw=2 ts=2 sts=2 expandtab
+autocmd! FileType css  setlocal sw=4 ts=2 sts=2 expandtab
 
 " for open-browser plugin
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
