@@ -25,7 +25,7 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,xim-onthespot
+URxvt.perl-ext-common:      default,xim-onthespot,clipboard
 !URxvt.matcher.button:       1
 !URxvt.urlLauncher:          google-chrome
 URxvt.inputMethod: fcitx
