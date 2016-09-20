@@ -144,6 +144,7 @@ endif
 
 vmap _C dkP==ireturn 
 vmap _O xiop_or_punct(tw, "pa")
+vmap _K xikeyword(tw, "pa")
 
 nmap _P itw.proc(() => {return 
 nmap _T ea(tw)
