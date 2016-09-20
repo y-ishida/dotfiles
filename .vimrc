@@ -142,3 +142,12 @@ endif
 "nmap _K /:kbd:df:lvi`K%hx%lx_K
 "nmap _M /:ref:df:lvi`Ugv:s/-/ /ggvM%hx%lx_M
 
+vmap _C dkP==ireturn 
+vmap _O xiop_or_punct(tw, "pa")
+
+nmap _P itw.proc(() => {return 
+nmap _T ea(tw)
+nmap _& a &&
+nmap _} o})<<<<
+nmap _O :s/\(\w*\)opt(tw)/opt(\1(tw))/g
+
