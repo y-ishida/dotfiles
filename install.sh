@@ -286,22 +286,22 @@ install_git
 install_vim
 install_byobu
 install_build_tools
-install_sphinx
-install_gollum
-install_deb_tools
-install_rpm_tools
+#install_sphinx
+#install_gollum
+#install_deb_tools
+#install_rpm_tools
 #install_gh
-install_ghi
-install_apache2
+#install_ghi
+#install_apache2
 
 # make and install from source code
 if ! [ -e $SRC ]; then
 	mkdir $SRC
 fi
-install_src_valac
-install_src_libgee
-install_src_valadoc
-install_src_imagemagick
+#install_src_valac
+#install_src_libgee
+#install_src_valadoc
+#install_src_imagemagick
 
 # etc.
 gen_key
