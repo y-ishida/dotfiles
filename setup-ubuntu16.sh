@@ -15,6 +15,9 @@ sudo apt-get install rxvt-unicode-256color
 sudo apt-get -y install fonts-ricty-diminished
 ln -s dotfiles/.Xdefaults .Xdefaults
 
+# byobu のブリンク無効化
+byobu-disable-prompt
+
 ## Fcitx設定 -> アドオン -> 拡張 -> Fcitx XIM Frontend
 ## 「XIM で On The Spot スタイルを使う」をチェック
 
