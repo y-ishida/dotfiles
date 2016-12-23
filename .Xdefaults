@@ -14,7 +14,7 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           true
-URxvt*font: xft:Ricty Diminished:size=12:antialias=true
+URxvt*font: xft:Ricty Diminished:size=11:antialias=true
 !URxvt*font: xft:Ricty:size=11:antialias=true
 !URxvt*font: xft:Ricty:size=22:antialias=true
 
