@@ -1,0 +1,30 @@
+#! /bin/sh
+
+cd
+
+# Gitの初期設定
+git config --global user.email "yusuke.ishida@gridraw.com"
+git config --global user.name "Yusuke Ishida"
+
+# VirtualBox でホストとファイル共有設定
+sudo gpasswd -a yusuke vboxsf
+ln -s /media/sf_onedrive onedrive
+
+# urxvt のインストールと設定
+sudo apt-get -y install rxvt-unicode
+sudo apt-get -y install fonts-ricty-diminished
+ln -s dotfiles/.Xdefaults .Xdefaults
+
+## Fcitx設定 -> アドオン -> 拡張 -> Fcitx XIM Frontend
+## 「XIM で On The Spot スタイルを使う」をチェック
+
+# xsel のインストール
+sudo apt-get -y install xsel
+
+# 不要なソフトの削除
+sudo apt-get -y --purge remove libreoffice*
+sudo apt-get -y --purge remove unity-webapps-*
+sudo apt-get -y --purge remove gnome-mines gnome-sudoku gnome-mahjongg aisleriot
+sudo apt-get -y --purge autoremove
+
+
