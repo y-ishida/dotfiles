@@ -11,7 +11,7 @@ sudo gpasswd -a yusuke vboxsf
 ln -s /media/sf_onedrive onedrive
 
 # urxvt のインストールと設定
-sudo apt-get -y install rxvt-unicode
+sudo apt-get install rxvt-unicode-256color
 sudo apt-get -y install fonts-ricty-diminished
 ln -s dotfiles/.Xdefaults .Xdefaults
 
