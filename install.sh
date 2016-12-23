@@ -35,6 +35,9 @@ install_vim() {
 install_byobu() {
 	sudo apt-get -y install byobu
 
+	# ~/.byobu ディレクトリを作る
+	byobu -c exit
+
 	# for 256 colors setting
 	echo 'set -g default-terminal "screen-256color"' >> ~/.byobu/profile.tmux
 }
