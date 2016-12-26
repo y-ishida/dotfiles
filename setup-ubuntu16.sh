@@ -30,4 +30,7 @@ sudo apt-get -y --purge remove unity-webapps-*
 sudo apt-get -y --purge remove gnome-mines gnome-sudoku gnome-mahjongg aisleriot
 sudo apt-get -y --purge autoremove
 
+# Node.js と Polymer のインストール
+sudo apt-get -y install nodejs nodejs-legacy npm
+sudo npm install -g polymer-cli
 
