@@ -18,9 +18,6 @@ ln -s dotfiles/.Xdefaults .Xdefaults
 # byobu のブリンク無効化
 byobu-disable-prompt
 
-## Fcitx設定 -> アドオン -> 拡張 -> Fcitx XIM Frontend
-## 「XIM で On The Spot スタイルを使う」をチェック
-
 # xsel のインストール
 sudo apt-get -y install xsel
 
@@ -33,4 +30,10 @@ sudo apt-get -y --purge autoremove
 # Node.js と Polymer のインストール
 sudo apt-get -y install nodejs nodejs-legacy npm
 sudo npm install -g polymer-cli
+
+echo
+echo "Urxvt で IM の on the spot 入力を有効にするには..."
+echo "  Fcitx設定 -> アドオン -> 拡張 -> Fcitx XIM Frontend"
+echo "  「XIM で On The Spot スタイルを使う」をチェック"
+echo
 
