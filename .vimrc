@@ -1,3 +1,13 @@
+set nocompatible
+set title
+set ruler
+set smartindent
+set noexpandtab
+set backspace=indent,eol,start
+set mouse=a
+set enc=utf-8
+set fencs=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,utf-16le,utf-16,default
+
 "バッファを保存しなくても他のバッファを表示できるようにする
 set hidden
 
@@ -85,6 +95,9 @@ Plugin 'tpope/vim-surround'
 
 Plugin 'sheerun/vim-polyglot'
 
+Plugin 'pangloss/vim-javascript'
+Plugin 'moll/vim-node'
+
 Plugin 'tomasr/molokai'
 
 " All of your Plugins must be added before the following line
@@ -107,6 +120,7 @@ let g:polyglot_disabled = ['vala']
 
 autocmd! FileType html setlocal sw=2 ts=2 sts=2 expandtab
 autocmd! FileType css  setlocal sw=4 ts=2 sts=2 expandtab
+autocmd! FileType coffee,javascript setlocal sw=2 ts=2 sts=2 expandtab
 
 " for open-browser plugin
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -115,6 +129,8 @@ vmap gx <Plug>(openbrowser-smart-search)
 
 " for molokai plugin (color scheme)
 set t_Co=256
+autocmd ColorScheme * hi Comment ctermfg=8
+autocmd ColorScheme * hi Visual  ctermbg=12
 silent! colorscheme molokai
 syntax enable
 
