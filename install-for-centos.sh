@@ -72,10 +72,10 @@ gen_key() {
 #set -x
 set -e
 
-#install_git
-#install_vim
-#install_tmux
-#install_misc
+install_git
+install_vim
+install_tmux
+install_misc
 #install_nodejs
 gen_key
 
