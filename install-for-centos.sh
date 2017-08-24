@@ -17,6 +17,11 @@ install_git() {
 	git config --global push.default simple
 }
 
+install_bashrc() {
+	backup ~/.bashrc
+	ln -fs $self_dir/.bashrc ~/.bashrc
+}
+
 install_vim() {
 	sudo yum install -y vim
 
@@ -73,6 +78,7 @@ gen_key() {
 set -e
 
 install_git
+install_bashrc
 install_vim
 install_tmux
 install_misc
