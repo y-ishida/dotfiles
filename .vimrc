@@ -48,6 +48,10 @@ set foldmethod=syntax
 "折り返し無効
 set nowrap
 
+"スペルチェック
+set spelllang=en,cjk
+set spell
+
 "Trailing whitespace対策
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 " http://www.bestofvim.com/tip/trailing-whitespace/
@@ -93,10 +97,17 @@ Plugin 'kannokanno/previm'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 
+"-- 各種言語用の構文サポート
 Plugin 'sheerun/vim-polyglot'
+
+"-- 構文チェッカー
+Plugin 'vim-syntastic/syntastic'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
+
+"-- Python の自動補完
+Plugin 'davidhalter/jedi-vim'
 
 Plugin 'tomasr/molokai'
 
@@ -118,9 +129,21 @@ let vala_space_errors = 1
 " disable the polyglot's vala syntax
 let g:polyglot_disabled = ['vala']
 
+" for syntastic plugin
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_mode_map = {'passive_filetypes':['tex']}
+
 autocmd! FileType html setlocal sw=2 ts=2 sts=2 expandtab
 autocmd! FileType css  setlocal sw=4 ts=2 sts=2 expandtab
 autocmd! FileType coffee,javascript setlocal sw=2 ts=2 sts=2 expandtab
+autocmd! FileType python setlocal foldmethod=indent expandtab
 
 " for open-browser plugin
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
