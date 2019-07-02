@@ -138,12 +138,17 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_mode_map = {'passive_filetypes':['tex']}
+let g:syntastic_mode_map = {'passive_filetypes':['tex', 'rst']}
 
 autocmd! FileType html setlocal sw=2 ts=2 sts=2 expandtab
 autocmd! FileType css  setlocal sw=4 ts=2 sts=2 expandtab
 autocmd! FileType coffee,javascript setlocal sw=2 ts=2 sts=2 expandtab
 autocmd! FileType python setlocal foldmethod=indent expandtab
+autocmd! FileType rst setlocal wrap linebreak breakindent
+
+" wrap 時に見た目通りに行移動する
+noremap k gk
+noremap j gj
 
 " for open-browser plugin
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
