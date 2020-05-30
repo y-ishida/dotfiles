@@ -43,6 +43,19 @@ install_byobu() {
 }
 
 
+install_tmux() {
+	sudo apt-get -y install tmux
+
+	# .vimrcのシンボリックリンク生成
+	if [ -e ~/.tmux ]; then
+		mv ~/.tmux.conf ~/.tmux.conf.old
+	fi
+	#ln -fs $DIR/.tmux.conf ~/.tmux.conf
+	# for tmux >= 2.9
+	ln -fs $DIR/.tmux.conf ~/.tmux.conf.2.9
+}
+
+
 install_build_tools() {
 	sudo apt-get -y install build-essential autoconf automake libtool
 	sudo apt-get -y install libxml2-dev
