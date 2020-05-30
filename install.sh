@@ -298,7 +298,8 @@ set -e
 # install from repository
 install_git
 install_vim
-install_byobu
+#install_byobu
+install_tmux
 install_build_tools
 #install_sphinx
 #install_gollum
