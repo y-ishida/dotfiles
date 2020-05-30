@@ -18,7 +18,7 @@ install_vim() {
 
 	# Vundleのインストール
 	if ! [ -e ~/.vim/bundle/Vundle.vim ]; then
-		git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+		git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	fi
 
 	# .vimrcのシンボリックリンク生成
