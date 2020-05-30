@@ -58,10 +58,10 @@ install_tmux() {
 
 install_build_tools() {
 	sudo apt-get -y install build-essential autoconf automake libtool
-	sudo apt-get -y install libxml2-dev
+	#sudo apt-get -y install libxml2-dev
 
 	# MinGW
-	sudo apt-get -y install mingw-w64
+	#sudo apt-get -y install mingw-w64
 }
 
 
