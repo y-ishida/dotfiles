@@ -65,6 +65,25 @@ install_build_tools() {
 }
 
 
+install_pyenv() {
+	# install pyenv
+	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+	echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+	echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+	echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+	source ~/.bashrc
+	# install dependencies libs to build python
+	sudo apt-get update; sudo apt-get install --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+	# install viurtualenv
+	git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+	echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+
+	# install system's python (opt.)
+	sudo apt install python3-pip python-is-python3
+}
+
+
 install_sphinx() {
 	sudo apt-get -y install python-sphinx
 	sudo apt-get -y install python-pip
@@ -301,6 +320,7 @@ install_vim
 #install_byobu
 install_tmux
 install_build_tools
+install_pyenv
 #install_sphinx
 #install_gollum
 #install_deb_tools
