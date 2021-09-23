@@ -16,10 +16,8 @@ install_git() {
 install_vim() {
 	sudo apt-get -y install vim
 
-	# Vundleのインストール
-	if ! [ -e ~/.vim/bundle/Vundle.vim ]; then
-		git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	fi
+	# vim-plug インストール
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 	# .vimrcのシンボリックリンク生成
 	if [ -e ~/.vimrc ]; then
@@ -27,8 +25,8 @@ install_vim() {
 	fi
 	ln -fs $DIR/.vimrc ~/.vimrc
 
-	# vimプラグインのインストール (Vundle)
-	vim +PluginInstall +qall
+	# プラグインのインストール
+	vim +PlugInstall +qall
 }
 
 

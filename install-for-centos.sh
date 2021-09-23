@@ -25,17 +25,15 @@ install_bashrc() {
 install_vim() {
 	sudo yum install -y vim
 
-	# Vundleのインストール
-	if ! [ -e ~/.vim/bundle/Vundle.vim ]; then
-		git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	fi
+	# vim-plug インストール
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 	# .vimrcのシンボリックリンク生成
 	backup ~/.vimrc
 	ln -fs $self_dir/.vimrc ~/.vimrc
 
-	# vimプラグインのインストール (Vundle)
-	vim +PluginInstall +qall
+	# プラグインのインストール
+	vim +PlugInstall +qall
 }
 
 install_tmux() {

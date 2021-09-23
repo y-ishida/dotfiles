@@ -52,6 +52,10 @@ set nowrap
 set spelllang=en,cjk
 set spell
 
+" wrap 時に見た目通りに行移動する
+noremap k gk
+noremap j gj
+
 "Trailing whitespace対策
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 " http://www.bestofvim.com/tip/trailing-whitespace/
@@ -70,75 +74,23 @@ autocmd FilterWritePre * :call TrimExtraWhitespace()
 autocmd BufWritePre    * :call TrimExtraWhitespace()
 
 
-"----- Vundle -----------------------------------------
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'tpope/vim-fugitive'
-Plugin 'Align'
-Plugin 'majutsushi/tagbar'
-
-Plugin 'y-ishida/vim-vala'
-
-Plugin 'godlygeek/tabular'
-
-Plugin 'tyru/open-browser.vim'
-Plugin 'kannokanno/previm'
-
+call plug#begin()
+"-- for alignment
+Plug 'godlygeek/tabular'
+"-- for open browser and preview
+Plug 'tyru/open-browser.vim'
+Plug 'previm/previm'
 "-- for HTML/CSS/JS
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-surround'
-
-"-- 各種言語用の構文サポート
-Plugin 'sheerun/vim-polyglot'
-
-"-- 構文チェッカー
-Plugin 'vim-syntastic/syntastic'
-
-Plugin 'pangloss/vim-javascript'
-Plugin 'moll/vim-node'
-
-"-- Python の自動補完
-Plugin 'davidhalter/jedi-vim'
-
-Plugin 'tomasr/molokai'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-"------------------------------------------------------
-
-" for tagbar plugin
-let g:tagbar_ctags_bin = "anjuta-tags"
-nmap <Leader>tb :TagbarToggle<CR>
-
-" for vim-vala plugin
-let vala_comment_strings = 1
-let vala_space_errors = 1
-"let vala_no_tab_space_error = 1
-
-" disable the polyglot's vala syntax
-let g:polyglot_disabled = ['vala']
-
-" for syntastic plugin
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_mode_map = {'passive_filetypes':['tex', 'rst']}
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-surround'
+"-- LSP
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"-- color scheme
+Plug 'tomasr/molokai'
+call plug#end()
 
 autocmd! FileType html setlocal sw=2 ts=2 sts=2 expandtab
 autocmd! FileType css  setlocal sw=4 ts=2 sts=2 expandtab
@@ -146,14 +98,43 @@ autocmd! FileType coffee,javascript setlocal sw=2 ts=2 sts=2 expandtab
 autocmd! FileType python setlocal foldmethod=indent expandtab
 autocmd! FileType rst setlocal wrap linebreak breakindent
 
-" wrap 時に見た目通りに行移動する
-noremap k gk
-noremap j gj
-
 " for open-browser plugin
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+" for previm plugin
+let g:previm_enable_realtime = 1
+
+" for vim-lsp plugin
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 " for molokai plugin (color scheme)
 set t_Co=256
@@ -176,23 +157,3 @@ if has('win32')
   source $VIMRUNTIME/menu.vim
 
 endif
-
-"" 選択範囲を {%??? ... %} で囲む
-"vmap K `>a %}`<i{%key %%
-"vmap M `>a %}`<i{%mode %%
-"vmap " :s/^"//egv:s/"$//egv:s/\\"/"/eggv:s/``/`/eg:noh
-"
-"" prep後に .po で適用
-"nmap _K /:kbd:df:lvi`K%hx%lx_K
-"nmap _M /:ref:df:lvi`Ugv:s/-/ /ggvM%hx%lx_M
-
-vmap _C dkP==ireturn 
-vmap _O xiop_or_punct(tw, "pa")
-vmap _K xikeyword(tw, "pa")
-
-nmap _P itw.proc(() => {return 
-nmap _T ea(tw)
-nmap _& a &&
-nmap _} o})<<<<
-nmap _O :s/\(\w*\)opt(tw)/opt(\1(tw))/g
-
