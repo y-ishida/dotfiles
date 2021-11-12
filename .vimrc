@@ -136,6 +136,8 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+let g:lsp_diagnostics_float_cursor = 1
+
 " for molokai plugin (color scheme)
 set t_Co=256
 autocmd ColorScheme * hi Comment ctermfg=8
