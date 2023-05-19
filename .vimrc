@@ -79,7 +79,7 @@ call plug#begin()
 Plug 'godlygeek/tabular'
 "-- for open browser and preview
 Plug 'tyru/open-browser.vim'
-Plug 'previm/previm'
+" Plug 'previm/previm'
 "-- for HTML/CSS/JS
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
@@ -92,7 +92,7 @@ call plug#end()
 " autocmd! FileType html setlocal sw=2 ts=2 sts=2 expandtab
 " autocmd! FileType css  setlocal sw=4 ts=2 sts=2 expandtab
 " autocmd! FileType coffee,javascript setlocal sw=2 ts=2 sts=2 expandtab
-" autocmd! FileType python setlocal foldmethod=indent expandtab
+ autocmd! FileType python setlocal foldmethod=indent expandtab
 " autocmd! FileType rst setlocal wrap linebreak breakindent
 
 " for open-browser plugin
