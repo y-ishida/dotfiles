@@ -50,17 +50,16 @@ install_build_tools() {
 
 gen_key() {
 	# 公開鍵の生成
-	if ! [ -f ~/.ssh/id_rsa.pub ]; then
-		ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+	if ! [ -f ~/.ssh/id_ed25519.pub ]; then
+		ssh-keygen -t ed25519 -N ""
 	fi
-
 
 	# 公開鍵の表示
 	echo
 	echo 'あなたの公開鍵↓'
 	echo '------------------------------'
 
-	cat ~/.ssh/id_rsa.pub
+	cat ~/.ssh/id_ed25519.pub
 
 	echo '------------------------------'
 }
