@@ -43,6 +43,10 @@ set -g pane-active-border fg=white,bg=yellow
 # コマンドラインの色を設定する
 set -g message-style fg=white,bg=black,bright
 
+# https://github.com/alacritty/alacritty/issues/4576
+# selected region colors
+set -g mode-style bg=yellow,fg=brightblack,noreverse
+
 # ステータスバーを設定する
 ## 左パネルを設定する
 set -g status-left-length 40
