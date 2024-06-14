@@ -83,6 +83,8 @@ Plug 'tyru/open-browser.vim'
 "-- for HTML/CSS/JS
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
+"-- for git
+Plug 'tpope/vim-fugitive'
 "-- LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "-- color scheme
@@ -256,4 +258,14 @@ if has('win32')
   set langmenu=ja_jp.utf-8
   source $VIMRUNTIME/menu.vim
 
+endif
+
+" https://superuser.com/questions/1291425/windows-subsystem-linux-make-vim-use-the-clipboard
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system("iconv -f utf8 -t cp932 | ".s:clip, @0) | endif
+    augroup END
 endif
