@@ -5,30 +5,34 @@ SRC=~/src
 
 update_bashrc() {
 	cat >> ~/.bashrc <<-EOF
-		# My setting
-		umask 022
+
 		export EDITOR=vim
 
-		# byobu でステータスライン表示がおかしくなる問題対策
-		export VTE_CJK_WIDTH=1
+		# For direnv
+		eval "$(direnv hook bash)"
+
+		# For venv with direnv  https://kellner.io/direnv.html
+		show_virtual_env() {
+			if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+				echo "($(basename $VIRTUAL_ENV))"
+			fi
+		}
+		export -f show_virtual_env
+		PS1='$(show_virtual_env)'$PS1
 		EOF
 
 	. ~/.bashrc
 }
 
 
-install_git() {
-	sudo apt-get -y install git
-
+setup_git() {
 	git config --global color.ui auto
 	git config --global core.editor vim
 	git config --global push.default simple
 }
 
 
-install_vim() {
-	sudo apt-get -y install vim
-
+setup_vim() {
 	# vim-plug インストール
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -43,8 +47,15 @@ install_vim() {
 }
 
 
-install_build_tools() {
-	sudo apt-get -y install build-essential autoconf automake libtool
+setup_tmux() {
+	ln -fs $DIR/.tmux.conf.2.9 ~/.tmux.conf
+}
+
+
+install_aws() {
+	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+	unzip awscliv2.zip
+	sudo ./aws/install
 }
 
 
@@ -64,11 +75,30 @@ gen_key() {
 	echo '------------------------------'
 }
 
+
 #set -x
 set -e
 
 update_bashrc
-install_git
-install_vim
+setup_git
+setup_vim
+setup_tmux
 # gen_key
 
+sudo apt-get update
+sudo apt-get install -y build-essential autoconf automake libtool
+sudo apt-get install -y unzip
+sudo apt-get install -y direnv
+sudo apt-get install -y npm  # LPS で必要
+
+# docker
+sudo apt-get install -y docker.io docker-compose
+sudo usermod -aG docker $USER
+newgrp docker
+
+sudo apt-get install -y python3 python3-pip python3-venv python-is-python3
+sudo apt-get install -y mysql-server mysql-client
+sudo systemctl disable mysql.service
+sudo systemctl stop mysql.service
+
+mkdir src
