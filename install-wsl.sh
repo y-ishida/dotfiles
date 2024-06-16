@@ -4,22 +4,22 @@ DIR=$(cd $(dirname $0); pwd)
 SRC=~/src
 
 update_bashrc() {
-	cat >> ~/.bashrc <<-EOF
+	cat >> ~/.bashrc <<'EOF'
 
-		export EDITOR=vim
+export EDITOR=vim
 
-		# For direnv
-		eval "$(direnv hook bash)"
+# For direnv
+eval "$(direnv hook bash)"
 
-		# For venv with direnv  https://kellner.io/direnv.html
-		show_virtual_env() {
-			if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
-				echo "($(basename $VIRTUAL_ENV))"
-			fi
-		}
-		export -f show_virtual_env
-		PS1='$(show_virtual_env)'$PS1
-		EOF
+# For venv with direnv  https://kellner.io/direnv.html
+show_virtual_env() {
+	if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+		echo "($(basename $VIRTUAL_ENV))"
+	fi
+}
+export -f show_virtual_env
+PS1='$(show_virtual_env)'$PS1
+EOF
 
 	. ~/.bashrc
 }
@@ -62,7 +62,7 @@ install_aws() {
 gen_key() {
 	# 公開鍵の生成
 	if ! [ -f ~/.ssh/id_ed25519.pub ]; then
-		ssh-keygen -t ed25519 -N ""
+		ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
 	fi
 
 	# 公開鍵の表示
@@ -76,14 +76,16 @@ gen_key() {
 }
 
 
-#set -x
+set -x
 set -e
 
 update_bashrc
 setup_git
 setup_vim
 setup_tmux
-# gen_key
+
+# デーモン再起動の問い合わせをしない
+echo "\$nrconf{restart} = 'a';" | sudo tee -a /etc/needrestart/needrestart.conf > /dev/null
 
 sudo apt-get update
 sudo apt-get install -y build-essential autoconf automake libtool
@@ -94,7 +96,6 @@ sudo apt-get install -y npm  # LPS で必要
 # docker
 sudo apt-get install -y docker.io docker-compose
 sudo usermod -aG docker $USER
-newgrp docker
 
 sudo apt-get install -y python3 python3-pip python3-venv python-is-python3
 sudo apt-get install -y mysql-server mysql-client
@@ -102,3 +103,4 @@ sudo systemctl disable mysql.service
 sudo systemctl stop mysql.service
 
 mkdir src
+gen_key
