@@ -102,5 +102,8 @@ sudo apt-get install -y mysql-server mysql-client
 sudo systemctl disable mysql.service
 sudo systemctl stop mysql.service
 
+# /tmp を tmpfs にマウント
+sudo systemctl enable /usr/share/systemd/tmp.mount
+
 mkdir src
 gen_key
