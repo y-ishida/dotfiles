@@ -89,7 +89,7 @@ echo "\$nrconf{restart} = 'a';" | sudo tee -a /etc/needrestart/needrestart.conf 
 
 sudo apt-get update
 sudo apt-get install -y build-essential autoconf automake libtool
-sudo apt-get install -y unzip
+sudo apt-get install -y zip unzip
 sudo apt-get install -y direnv
 sudo apt-get install -y npm  # LPS で必要
 
