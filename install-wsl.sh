@@ -96,6 +96,7 @@ sudo apt-get install -y npm  # LPS で必要
 # docker
 sudo apt-get install -y docker.io docker-compose
 sudo usermod -aG docker $USER
+cp -r $DIR/.docker ~/
 
 sudo apt-get install -y python3 python3-pip python3-venv python-is-python3
 sudo apt-get install -y mysql-server mysql-client
