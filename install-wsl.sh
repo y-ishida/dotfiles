@@ -94,7 +94,7 @@ sudo apt-get install -y direnv
 sudo apt-get install -y npm  # LPS で必要
 
 # docker
-sudo apt-get install -y docker.io docker-compose
+sudo apt-get install -y docker.io docker-compose-v2
 sudo usermod -aG docker $USER
 cp -r $DIR/.docker ~/
 
