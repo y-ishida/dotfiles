@@ -52,9 +52,15 @@ set nowrap
 set spelllang=en,cjk
 set spell
 
+"全角記号の幅を広く
+set ambiwidth=double
+
 " wrap 時に見た目通りに行移動する
 noremap k gk
 noremap j gj
+
+" netrw の設定
+let g:netrw_winsize = 10
 
 "Trailing whitespace対策
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
@@ -95,6 +101,8 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 "-- color scheme
 Plug 'tomasr/molokai'
+"-- GitHub Copilot
+Plug 'github/copilot.vim'
 call plug#end()
 
 " autocmd! FileType html setlocal sw=2 ts=2 sts=2 expandtab
@@ -141,6 +149,7 @@ function! s:on_lsp_buffer_enabled() abort
 endfunction
 
 let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_float_delay = 50
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_echo_delay = 50
 let g:lsp_diagnostics_highlights_enabled = 1
@@ -148,9 +157,11 @@ let g:lsp_diagnostics_highlights_delay = 50
 let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 let g:lsp_diagnostics_signs_enabled = 1
 let g:lsp_diagnostics_signs_delay = 50
-let g:lsp_diagnostics_signs_insert_mode_enabled = 0
+" let g:lsp_diagnostics_signs_insert_mode_enabled = 0
 let g:lsp_diagnostics_virtual_text_enabled = 1
 let g:lsp_diagnostics_virtual_text_delay = 50
+let g:lsp_diagnostics_virtual_text_align = "right"
+let g:lsp_diagnostics_virtual_text_insert_mode_enabled = 1
 let g:lsp_completion_documentation_delay = 40
 let g:lsp_document_highlight_delay = 100
 let g:lsp_document_code_action_signs_delay = 100
