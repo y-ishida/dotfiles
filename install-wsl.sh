@@ -85,7 +85,7 @@ setup_vim
 setup_tmux
 
 # デーモン再起動の問い合わせをしない
-echo "\$nrconf{restart} = 'a';" | sudo tee -a /etc/needrestart/needrestart.conf > /dev/null
+#echo "\$nrconf{restart} = 'a';" | sudo tee -a /etc/needrestart/needrestart.conf > /dev/null
 
 sudo apt-get update
 sudo apt-get install -y build-essential autoconf automake libtool

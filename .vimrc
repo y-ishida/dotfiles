@@ -143,6 +143,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> K <plug>(lsp-hover)
     nnoremap <buffer> <expr><c-j> lsp#scroll(+4)
     nnoremap <buffer> <expr><c-k> lsp#scroll(-4)
+	xnoremap <buffer> = <Plug>(lsp-document-range-format)
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
@@ -176,6 +177,18 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" let g:lsp_settings_root_markers = [
+" \   '.venv/',
+" \   '.git',
+" \   '.git/',
+" \   '.svn',
+" \   '.hg',
+" \   '.bzr'
+" \ ]
 
 "コメント行の自動継続 (プラグインで設定されているようなので最後に設定)
 set formatoptions+=ro
