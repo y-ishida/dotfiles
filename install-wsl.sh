@@ -8,6 +8,9 @@ update_bashrc() {
 
 export EDITOR=vim
 
+# Prevent accidental shell exit when pressing Ctrl+D
+set -o ignoreeof
+
 # For direnv
 eval "$(direnv hook bash)"
 
