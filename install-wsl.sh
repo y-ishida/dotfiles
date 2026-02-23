@@ -28,6 +28,7 @@ EOF
 setup_git() {
 	git config --global color.ui auto
 	git config --global core.editor vim
+	git config --global core.quotepath false
 	git config --global push.default simple
 }
 
